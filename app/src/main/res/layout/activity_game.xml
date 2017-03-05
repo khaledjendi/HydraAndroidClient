@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.client.activity.GameActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="60dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/hangman_icon"
+            android:id="@+id/imageView"
+            android:layout_weight="0"
+            android:layout_width="50dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/hangman_small"
+            android:id="@+id/imageView2"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/linearLayout"
+        android:gravity="center">
+
+        <Button
+            android:text="Play Game"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textColor="@android:color/background_light"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/play"
+            android:onClick="onPlayClicked" />
+
+        <Button
+            android:text="Reset/ Exit"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
+            android:textColor="@android:color/background_light"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/reset"
+            android:onClick="onResetClicked" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout0"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/linearLayout_main"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="155dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:text="Word: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textView4"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtWord"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:text="Tries: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textView5"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTries"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:text="Score: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/textView6"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtScore"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/buttonsPanel"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@+id/linearLayout0"
+        android:layout_marginTop="10dp">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:text="A"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter" />
+
+            <Button
+                android:text="B"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="C"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="D"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="E"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="F"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:text="G"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+
+
+            <Button
+                android:text="H"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="I"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="J"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="K"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="L"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:text="M"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="N"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="O"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="P"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="Q"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="R"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:text="S"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="T"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="U"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="V"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="W"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="X"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:text="Y"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <Button
+                android:text="Z"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendLetter"/>
+
+            <EditText
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:hint="Guess Word!"
+                android:inputType="textPersonName"
+                android:id="@+id/txtWholeWord"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent"  />
+
+            <Button
+                android:text="Send"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:textColor="@android:color/background_light"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:onClick="sendWholeWord" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/buttonsPanel">
+
+        <TextView
+            android:text="Status: "
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="18sp" />
+        <TextView
+            android:text=""
+            android:id="@+id/txtInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>
